@@ -1,0 +1,9 @@
+set -e
+tar xvzf dnsmasq/dnsmasq-2.78.tar.gz
+(
+  cd dnsmasq-2.78
+
+  make
+  mkdir $BOSH_INSTALL_TARGET/bin
+  cp src/dnsmasq $BOSH_INSTALL_TARGET/bin/dnsmasq
+)

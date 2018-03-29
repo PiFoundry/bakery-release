@@ -1,0 +1,10 @@
+---
+name: hooktftp
+
+templates:
+    bin/hooktftp_ctl.erb: bin/hooktftp_ctl
+    config/hooktftp.yml.erb: config/hooktftp.yml
+
+packages: [ hooktftp ]
+
+properties: {}

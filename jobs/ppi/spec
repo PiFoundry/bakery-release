@@ -1,0 +1,11 @@
+---
+name: ppi
+
+templates:
+  config/ppiConfig.json.erb: config/ppiConfig.json
+
+packages: [ ppi ]
+
+properties:
+    ppi.config:
+      description: ppiConfig.json file content

@@ -1,0 +1,6 @@
+---
+name: ppi
+
+dependencies: [ golang-1.10-linux ]
+
+files: [ github.com/**/*.go ]

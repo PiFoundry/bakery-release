@@ -1,0 +1,14 @@
+---
+name: bakery
+
+templates:
+    bin/bakery_ctl.erb: bin/bakery_ctl
+    config/bakery.env.erb: config/bakery.env
+    
+provides:
+- name: bakery
+  type: bakery
+
+packages: [ bakery, kpartx ]
+
+properties:

@@ -1,0 +1,7 @@
+---
+name: bakery
+
+dependencies: [ golang-1.10-linux, hooktftp ]
+
+files:
+  - "github.com/**/*"  

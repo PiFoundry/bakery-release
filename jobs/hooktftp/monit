@@ -1,0 +1,5 @@
+check process hooktftp
+  with pidfile /var/vcap/sys/run/hooktftp/hooktftp.pid
+  start program "/bin/sh -c '/var/vcap/jobs/hooktftp/bin/hooktftp_ctl start'"
+  stop program "/var/vcap/jobs/hooktftp/bin/hooktftp_ctl stop"
+  group vcap

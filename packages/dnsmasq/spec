@@ -1,0 +1,6 @@
+---
+name: dnsmasq
+
+dependencies: []
+
+files: [ dnsmasq/dnsmasq-2.78.tar.gz ]

@@ -1,0 +1,40 @@
+#!/bin/bash
+
+EXEC_NAME=dnsmasq
+RUN_DIR=/var/vcap/sys/run/dnsmasq
+LOG_DIR=/var/vcap/sys/log/dnsmasq
+PIDFILE=${RUN_DIR}/${EXEC_NAME}.pid
+BINPATH=/var/vcap/packages/dnsmasq/bin/
+
+mkdir -p ${RUN_DIR} ${LOG_DIR}
+chown -R vcap:vcap $RUN_DIR $LOG_DIR
+
+case $1 in
+
+  start)
+
+  echo $$ > ${PIDFILE}
+
+#/usr/sbin/dnsmasq -x /var/run/dnsmasq/dnsmasq.pid -u dnsmasq -I lo -7 /etc/dnsmasq.d,.dpkg-dist,.dpkg-old,.dpkg-new --local-service --trust-anchor=.,19036,8,2,49AAC11D7B6F6446702E54A1607371607A1A41855200FD2CE1CDDE32F24E8FB5
+  exec ${BINPATH}/${EXEC_NAME} \
+    -d \
+    -u root \
+    -I lo \
+    --local-service \
+    --conf-file=/var/vcap/jobs/dnsmasq/config/dnsmasq.conf \
+    >> ${LOG_DIR}/${EXEC_NAME}.stdout.log \
+    2>> ${LOG_DIR}/${EXEC_NAME}.stderr.log
+
+
+    ;;
+
+  stop)
+    kill -9 `cat $PIDFILE`
+    rm -f $PIDFILE
+
+    ;;
+
+  *)
+    echo "Usage: ctl {start|stop}" ;;
+
+esac

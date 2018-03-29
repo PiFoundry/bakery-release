@@ -1,0 +1,33 @@
+#!/bin/bash
+
+EXEC_NAME=hooktftp
+RUN_DIR=/var/vcap/sys/run/hooktftp
+LOG_DIR=/var/vcap/sys/log/hooktftp
+PIDFILE=${RUN_DIR}/${EXEC_NAME}.pid
+BINPATH=/var/vcap/packages/hooktftp/bin/
+
+mkdir -p ${RUN_DIR} ${LOG_DIR}
+chown -R vcap:vcap $RUN_DIR $LOG_DIR
+
+case $1 in
+
+  start)
+    echo $$ > $PIDFILE
+
+    exec ${BINPATH}/${EXEC_NAME} \
+        -v /var/vcap/jobs/hooktftp/config/hooktftp.yml \
+        >> ${LOG_DIR}/${EXEC_NAME}.stdout.log \
+        2>> ${LOG_DIR}/${EXEC_NAME}.stderr.log
+
+    ;;
+
+  stop)
+    kill -9 `cat $PIDFILE`
+    rm -f $PIDFILE
+
+    ;;
+
+  *)
+    echo "Usage: ctl {start|stop}" ;;
+
+esac

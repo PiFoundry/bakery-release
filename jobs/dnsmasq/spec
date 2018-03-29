@@ -1,0 +1,10 @@
+---
+name: dnsmasq
+
+templates:
+  bin/dnsmasq_ctl.erb: bin/dnsmasq_ctl
+  config/dnsmasq.conf.erb: config/dnsmasq.conf
+
+packages: [ dnsmasq ]
+
+properties: {}

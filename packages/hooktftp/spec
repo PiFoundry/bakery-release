@@ -1,0 +1,9 @@
+---
+name: hooktftp
+
+dependencies: [ golang-1.10-linux ]
+
+files:
+  - "github.com/**/*.go"
+  - "golang.org/x/sys/**/*"
+  - "launchpad.net/goyaml/*.go"

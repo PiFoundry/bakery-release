@@ -1,0 +1,5 @@
+check process dnsmasq
+  with pidfile /var/vcap/sys/run/dnsmasq/dnsmasq.pid
+  start program "/bin/sh -c '/var/vcap/jobs/dnsmasq/bin/dnsmasq_ctl start'"
+  stop program "/var/vcap/jobs/dnsmasq/bin/dnsmasq_ctl stop"
+  group vcap

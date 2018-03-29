@@ -1,0 +1,8 @@
+check process bakery
+  with pidfile /var/vcap/sys/run/bakery/bakery.pid
+  start program "/bin/sh -c '/var/vcap/jobs/bakery/bin/bakery_ctl start'"
+  stop program "/var/vcap/jobs/bakery/bin/bakery_ctl stop"
+  if failed host 127.0.0.1 port 8080
+    with timeout 5 seconds for 12 cycles
+    then restart
+  group vcap

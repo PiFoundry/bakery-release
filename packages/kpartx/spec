@@ -1,0 +1,6 @@
+---
+name: kpartx
+
+dependencies: []
+
+files: [ multipath-tools/**/* ]
